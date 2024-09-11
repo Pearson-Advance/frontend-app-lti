@@ -210,4 +210,3 @@ Articles on react/redux application organization:
   - https://hackernoon.com/fractal-a-react-app-structure-for-infinite-scale-4dab943092af
   - https://marmelab.com/blog/2015/12/17/react-directory-structure.html
   - https://redux.js.org/faq/code-structure
-
