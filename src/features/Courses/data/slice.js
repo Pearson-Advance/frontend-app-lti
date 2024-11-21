@@ -17,22 +17,22 @@ export const coursesSlice = createSlice({
   name: 'courses',
   initialState,
   reducers: {
-    fetchCoursesDataRequest: (state) => {
+    updateCoursesDataRequest: (state) => {
       state.table.status = RequestStatus.LOADING;
     },
-    fetchCoursesDataSuccess: (state, { payload }) => {
+    updateCoursesDataSuccess: (state, { payload }) => {
       const { results, count, numPages } = payload;
       state.table.status = RequestStatus.SUCCESS;
       state.table.data = results;
       state.table.numPages = numPages;
       state.table.count = count;
     },
-    fetchCoursesDataFailed: (state) => {
+    updateCoursesDataFailed: (state) => {
       state.table.status = RequestStatus.ERROR;
     },
   },
 });
 
-export const { fetchCoursesDataRequest, fetchCoursesDataSuccess, fetchCoursesDataFailed } = coursesSlice.actions;
+export const { updateCoursesDataRequest, updateCoursesDataSuccess, updateCoursesDataFailed } = coursesSlice.actions;
 
 export const { reducer } = coursesSlice;

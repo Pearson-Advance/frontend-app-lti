@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCoursesData } from '../data';
+
+import { fetchCoursesData } from 'features/Courses/data';
 
 const CoursesPage = () => {
   const dispatch = useDispatch();

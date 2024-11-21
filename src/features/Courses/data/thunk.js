@@ -1,18 +1,19 @@
 /* eslint-disable import/prefer-default-export */
 import { logError } from '@edx/frontend-platform/logging';
 import { camelCaseObject } from '@edx/frontend-platform';
-import { fetchCoursesDataFailed, fetchCoursesDataRequest, fetchCoursesDataSuccess } from 'features/Courses/data/slice';
-import { handleGetLicensedCourses } from './api';
+
+import { fetchLicensedCourses } from 'features/Courses/data/api';
+import { updateCoursesDataRequest, updateCoursesDataSuccess, updateCoursesDataFailed } from 'features/Courses/data/slice';
 
 function fetchCoursesData(launchId) {
   return async (dispatch) => {
-    dispatch(fetchCoursesDataRequest());
+    dispatch(updateCoursesDataRequest());
 
     try {
-      const response = camelCaseObject(await handleGetLicensedCourses(launchId));
-      dispatch(fetchCoursesDataSuccess(response.data));
+      const response = camelCaseObject(await fetchLicensedCourses(launchId));
+      dispatch(updateCoursesDataSuccess(response.data));
     } catch (error) {
-      dispatch(fetchCoursesDataFailed());
+      dispatch(updateCoursesDataFailed());
       logError(error);
     }
   };

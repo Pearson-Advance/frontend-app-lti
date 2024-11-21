@@ -4,11 +4,11 @@ import { getConfig } from '@edx/frontend-platform';
 
 const DEEP_LINKING_URL = 'lti/deep_linking';
 
-function handleGetLicensedCourses(launchId) {
+function fetchLicensedCourses(launchId) {
   const apiV2BaseUrl = getConfig().COURSE_OPERATIONS_API_V2_BASE_URL;
 
   return getAuthenticatedHttpClient()
     .get([apiV2BaseUrl, DEEP_LINKING_URL, launchId, 'content_items/courses'].join('/'));
 }
 
-export { handleGetLicensedCourses };
+export { fetchLicensedCourses };
