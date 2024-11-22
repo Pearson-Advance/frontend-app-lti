@@ -3,7 +3,7 @@ import { Button } from 'react-paragon-topaz';
 import { Search } from '@edx/paragon/icons';
 import PropTypes from 'prop-types';
 
-const CoursesFilters = ({
+const TableFilters = ({
   handleSetKeyword, handleResetSearch, keyword, handleSearchValues,
 }) => (
   <div>
@@ -31,15 +31,15 @@ const CoursesFilters = ({
   </div>
 );
 
-CoursesFilters.propTypes = {
+TableFilters.propTypes = {
   handleSetKeyword: PropTypes.func.isRequired,
   handleResetSearch: PropTypes.func.isRequired,
   handleSearchValues: PropTypes.func.isRequired,
   keyword: PropTypes.string,
 };
 
-CoursesFilters.defaultProps = {
+TableFilters.defaultProps = {
   keyword: '',
 };
 
-export default CoursesFilters;
+export default TableFilters;
