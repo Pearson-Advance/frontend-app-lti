@@ -5,12 +5,12 @@ import { camelCaseObject } from '@edx/frontend-platform';
 import { fetchLicensedCourses } from 'features/Courses/data/api';
 import { updateCoursesDataRequest, updateCoursesDataSuccess, updateCoursesDataFailed } from 'features/Courses/data/slice';
 
-function fetchCoursesData(launchId) {
+function fetchCoursesData(launchId, keyword) {
   return async (dispatch) => {
     dispatch(updateCoursesDataRequest());
 
     try {
-      const response = camelCaseObject(await fetchLicensedCourses(launchId));
+      const response = camelCaseObject(await fetchLicensedCourses(launchId, keyword));
       dispatch(updateCoursesDataSuccess(response.data));
     } catch (error) {
       dispatch(updateCoursesDataFailed());

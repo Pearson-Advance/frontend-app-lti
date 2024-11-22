@@ -16,3 +16,10 @@ export const RequestStatus = {
   INITIAL: 'initial',
   COMPLETE_WITH_ERRORS: 'complete-with-errors',
 };
+
+/**
+ * Number for initial page.
+ * @readonly
+ * @number
+ */
+export const initialPage = 1;
