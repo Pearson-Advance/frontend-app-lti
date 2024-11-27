@@ -34,6 +34,7 @@ initialize(
       config: () => {
         mergeConfig({
           MFE_CONFIG_API_URL: process.env.MFE_CONFIG_API_URL || null,
+          OPENEDX_LTI_TOOL_PLUGIN_URL: process.env.OPENEDX_LTI_TOOL_PLUGIN_URL || null,
           COURSE_OPERATIONS_API_V2_BASE_URL: process.env.COURSE_OPERATIONS_API_V2_BASE_URL || null,
         });
       },
