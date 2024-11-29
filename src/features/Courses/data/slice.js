@@ -59,8 +59,13 @@ export const coursesSlice = createSlice({
 });
 
 export const {
-  updateCoursesDataRequest, updateCoursesDataSuccess, updateCoursesDataFailed,
-  updateCourseClassesDataRequest, updateCourseClassesDataSuccess, updateCourseClassesDataFailed, resetCourseClassesData,
+  updateCoursesDataRequest,
+  updateCoursesDataSuccess,
+  updateCoursesDataFailed,
+  updateCourseClassesDataRequest,
+  updateCourseClassesDataSuccess,
+  updateCourseClassesDataFailed,
+  resetCourseClassesData,
 } = coursesSlice.actions;
 
 export const { reducer } = coursesSlice;

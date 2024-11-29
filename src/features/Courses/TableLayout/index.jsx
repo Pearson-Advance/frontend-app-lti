@@ -6,7 +6,14 @@ import {
 import './index.scss';
 
 const TableLayout = ({
-  data, columns, count, numPages, handleChangeSelectedCourses, isLoading, actionButton, handleRefetchData,
+  data,
+  columns,
+  count,
+  numPages,
+  handleChangeSelectedCourses,
+  isLoading,
+  actionButton,
+  handleRefetchData,
 }) => (
   <Row className="justify-content-center my-4">
     <Col>
