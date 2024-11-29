@@ -2,8 +2,11 @@
 import { logError } from '@edx/frontend-platform/logging';
 import { camelCaseObject } from '@edx/frontend-platform';
 
-import { fetchLicensedCourses } from 'features/Courses/data/api';
-import { updateCoursesDataRequest, updateCoursesDataSuccess, updateCoursesDataFailed } from 'features/Courses/data/slice';
+import { fetchLicensedCourses, fetchCoursesClasses } from 'features/Courses/data/api';
+import {
+  updateCoursesDataRequest, updateCoursesDataSuccess, updateCoursesDataFailed,
+  updateCourseClassesDataRequest, updateCourseClassesDataSuccess, updateCourseClassesDataFailed,
+} from 'features/Courses/data/slice';
 
 function fetchCoursesData(launchId) {
   return async (dispatch) => {
@@ -19,4 +22,18 @@ function fetchCoursesData(launchId) {
   };
 }
 
-export { fetchCoursesData };
+function fetchCourseClassesData(launchId, params) {
+  return async (dispatch) => {
+    dispatch(updateCourseClassesDataRequest());
+
+    try {
+      const response = camelCaseObject(await fetchCoursesClasses(launchId, params));
+      dispatch(updateCourseClassesDataSuccess(response.data));
+    } catch (error) {
+      dispatch(updateCourseClassesDataFailed());
+      logError(error);
+    }
+  };
+}
+
+export { fetchCoursesData, fetchCourseClassesData };

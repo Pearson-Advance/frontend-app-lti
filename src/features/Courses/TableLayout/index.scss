@@ -1,0 +1,11 @@
+.table-footer {
+  gap: 2em;
+
+  > div:first-child {
+    display: none;
+  }
+}
+
+.pagination {
+  margin: 0;
+}
