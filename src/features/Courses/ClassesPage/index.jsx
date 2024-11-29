@@ -1,4 +1,3 @@
-/* eslint-disable react/no-danger */
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Container } from '@edx/paragon';
@@ -41,6 +40,7 @@ const ClassesPage = () => {
 
   return (
     <>
+      {/* eslint-disable react/no-danger */}
       <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(htmlResponse) }} />
 
       <Container size="xl" className="px-4 py-3">
