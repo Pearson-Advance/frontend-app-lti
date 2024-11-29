@@ -1,0 +1,58 @@
+@import 'assets/colors.scss';
+@import 'assets/variables.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+div {
+  display: block;
+}
+
+body {
+  font-family: $font-family;
+  color: $color-black;
+  margin: 0;
+}
+
+button {
+  font-family: $font-family;
+  overflow: visible;
+}
+
+input {
+  overflow: visible;
+}
+
+a {
+  color: $hyperlink-color;
+  text-decoration: underline;
+
+  &:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
+li {
+  text-align: -webkit-match-parent;
+}
+
+.edx-cookie-banner-wrapper .edx-cookie-banner.alert {
+  border-radius: 0;
+  padding: 1.8rem;
+
+  .alert-dialog {
+    font-size: 1rem;
+    font-family: $font-family;
+    text-align: start;
+    max-width: none;
+    margin: 0 1rem 0;
+  }
+
+  .btn.close,
+  .btn.close:hover {
+    padding: 1.75rem 1.25rem;
+  }
+}
