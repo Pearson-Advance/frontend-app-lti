@@ -13,7 +13,6 @@ const TableLayout = ({
   handleChangeSelectedCourses,
   isLoading,
   actionButton,
-  handleRefetchData,
 }) => (
   <Row className="justify-content-center my-4">
     <Col>
@@ -23,13 +22,13 @@ const TableLayout = ({
         manualPagination
         itemCount={count}
         pageCount={numPages}
-        fetchData={handleRefetchData}
         onSelectedRowsChanged={handleChangeSelectedCourses}
         isLoading={isLoading}
         columns={columns}
         data={data}
         additionalColumns={actionButton ? [
           {
+            id: 'action',
             Header: 'Action',
             Cell: ({ row }) => actionButton(row.original.url),
           },
@@ -47,7 +46,6 @@ TableLayout.propTypes = {
   data: PropTypes.arrayOf(PropTypes.shape([])),
   columns: PropTypes.arrayOf(PropTypes.shape([])).isRequired,
   handleChangeSelectedCourses: PropTypes.func.isRequired,
-  handleRefetchData: PropTypes.func.isRequired,
   count: PropTypes.number,
   numPages: PropTypes.number,
   isLoading: PropTypes.bool,
