@@ -12,6 +12,18 @@ function fetchLicensedCourses(launchId) {
   return getAuthenticatedHttpClient().get(URL);
 }
 
+function fetchCoursesClasses(launchId, { courseId = '' }) {
+  const apiV2BaseUrl = getConfig().COURSE_OPERATIONS_API_V2_BASE_URL;
+
+  const URL = [apiV2BaseUrl, DEEP_LINKING_URL, launchId, 'content_items/classes'].join('/');
+
+  const params = {
+    course_id: courseId,
+  };
+
+  return getAuthenticatedHttpClient().get(URL, { params });
+}
+
 function validateContentSelection(launchId, data) {
   const apiBaseUrl = getConfig().OPENEDX_LTI_TOOL_PLUGIN_URL;
 
@@ -20,4 +32,4 @@ function validateContentSelection(launchId, data) {
   return getAuthenticatedHttpClient().post(URL, data);
 }
 
-export { fetchLicensedCourses, validateContentSelection };
+export { fetchLicensedCourses, fetchCoursesClasses, validateContentSelection };

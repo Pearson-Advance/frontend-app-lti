@@ -16,3 +16,6 @@ temp/babel-plugin-react-intl
 *~
 /temp
 /.vscode
+
+# Local environment overrides
+.env.private

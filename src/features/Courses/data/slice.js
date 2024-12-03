@@ -1,10 +1,19 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
-import { RequestStatus } from 'features/constants';
+
+import { RequestStatus, initialPage } from 'features/constants';
 
 const initialState = {
   table: {
-    currentPage: 1,
+    currentPage: initialPage,
+    data: [],
+    status: RequestStatus.INITIAL,
+    error: null,
+    numPages: 0,
+    count: 0,
+  },
+  classesTable: {
+    currentPage: initialPage,
     data: [],
     status: RequestStatus.INITIAL,
     error: null,
@@ -30,9 +39,33 @@ export const coursesSlice = createSlice({
     updateCoursesDataFailed: (state) => {
       state.table.status = RequestStatus.ERROR;
     },
+    updateCourseClassesDataRequest: (state) => {
+      state.classesTable.status = RequestStatus.LOADING;
+    },
+    updateCourseClassesDataSuccess: (state, { payload }) => {
+      const { results, count, numPages } = payload;
+      state.classesTable.status = RequestStatus.SUCCESS;
+      state.classesTable.data = results;
+      state.classesTable.numPages = numPages;
+      state.classesTable.count = count;
+    },
+    updateCourseClassesDataFailed: (state) => {
+      state.classesTable.status = RequestStatus.ERROR;
+    },
+    resetCourseClassesData: (state) => {
+      state.classesTable = initialState.classesTable;
+    },
   },
 });
 
-export const { updateCoursesDataRequest, updateCoursesDataSuccess, updateCoursesDataFailed } = coursesSlice.actions;
+export const {
+  updateCoursesDataRequest,
+  updateCoursesDataSuccess,
+  updateCoursesDataFailed,
+  updateCourseClassesDataRequest,
+  updateCourseClassesDataSuccess,
+  updateCourseClassesDataFailed,
+  resetCourseClassesData,
+} = coursesSlice.actions;
 
 export const { reducer } = coursesSlice;
