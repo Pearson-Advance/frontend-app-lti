@@ -8,8 +8,6 @@ import './index.scss';
 const TableLayout = ({
   data,
   columns,
-  count,
-  numPages,
   handleChangeSelectedCourses,
   isLoading,
   actionButton,
@@ -18,10 +16,7 @@ const TableLayout = ({
     <Col>
       <DataTable
         isSelectable
-        isPaginated
-        manualPagination
-        itemCount={count}
-        pageCount={numPages}
+        itemCount={data.length}
         onSelectedRowsChanged={handleChangeSelectedCourses}
         isLoading={isLoading}
         columns={columns}
@@ -36,7 +31,6 @@ const TableLayout = ({
       >
         <DataTable.Table />
         <DataTable.EmptyTable content="No courses found." />
-        <DataTable.TableFooter className="table-footer" />
       </DataTable>
     </Col>
   </Row>
@@ -46,16 +40,12 @@ TableLayout.propTypes = {
   data: PropTypes.arrayOf(PropTypes.shape([])),
   columns: PropTypes.arrayOf(PropTypes.shape([])).isRequired,
   handleChangeSelectedCourses: PropTypes.func.isRequired,
-  count: PropTypes.number,
-  numPages: PropTypes.number,
   isLoading: PropTypes.bool,
   actionButton: PropTypes.func,
 };
 
 TableLayout.defaultProps = {
   data: [],
-  count: 0,
-  numPages: 0,
   isLoading: true,
   actionButton: null,
 };

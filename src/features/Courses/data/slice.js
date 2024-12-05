@@ -1,11 +1,10 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
-import { RequestStatus, initialPage } from 'features/constants';
+import { RequestStatus } from 'features/constants';
 
 const initialState = {
   table: {
-    currentPage: initialPage,
     data: [],
     status: RequestStatus.INITIAL,
     error: null,
@@ -13,7 +12,6 @@ const initialState = {
     count: 0,
   },
   classesTable: {
-    currentPage: initialPage,
     data: [],
     status: RequestStatus.INITIAL,
     error: null,

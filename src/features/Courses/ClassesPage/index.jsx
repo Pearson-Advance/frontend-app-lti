@@ -8,9 +8,12 @@ import { ArrowBack } from '@edx/paragon/icons';
 import { extractLastPathSegment } from 'helpers';
 import { RequestStatus } from 'features/constants';
 import TableLayout from 'features/Courses/TableLayout';
+import TableFilters from 'features/Courses/TableFilters';
 import { columns } from 'features/Courses/ClassesPage/columns';
 import { fetchCourseClassesData, fetchCoursesData } from 'features/Courses/data';
 import useManageTableSelection from 'features/Courses/hooks/useManageTableSelection';
+import useFilterSearch from 'features/Courses/hooks/useFilterSearch';
+import TableFooter from 'features/Courses/TableFooter';
 
 const ClassesPage = () => {
   const dispatch = useDispatch();
@@ -38,6 +41,16 @@ const ClassesPage = () => {
     launchId, courseId, tableData: classesTable, fetchData: fetchCourseClassesData,
   });
 
+  const {
+    handleSetKeyword,
+    handleResetSearch,
+    handleFetchDataFromPage,
+    handleSubmitSearch,
+    searchParams,
+  } = useFilterSearch({
+    launchId, courseId, tableData: classesTable, fetchData: fetchCourseClassesData,
+  });
+
   return (
     <>
       {/* eslint-disable react/no-danger */}
@@ -52,16 +65,27 @@ const ClassesPage = () => {
         </div>
         <div className="page-content-container p-4 d-flex flex-column">
           <h3 className="mb-4">{masterCourse?.title}</h3>
+          <TableFilters
+            keyword={searchParams.keyword}
+            handleSetKeyword={handleSetKeyword}
+            handleResetSearch={handleResetSearch}
+            handleSubmitSearch={handleSubmitSearch}
+          />
+
           <TableLayout
             data={classesTable.data}
             columns={columns}
-            count={classesTable.count}
-            numPages={classesTable.numPages}
             handleChangeSelectedCourses={handleChangeSelectedCourses}
             isLoading={classesTable.status === RequestStatus.LOADING}
           />
 
-          <Button className="align-self-end" onClick={handleSubmitSelectedCourses} disabled={!hasSelectedCourses}>
+          <TableFooter
+            numPages={classesTable.numPages}
+            currentPage={searchParams.page}
+            handleFetchDataFromPage={handleFetchDataFromPage}
+          />
+
+          <Button className="align-self-end mt-4" onClick={handleSubmitSelectedCourses} disabled={!hasSelectedCourses}>
             Submit
           </Button>
         </div>

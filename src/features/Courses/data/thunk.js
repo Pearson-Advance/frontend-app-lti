@@ -12,12 +12,26 @@ import {
   updateCourseClassesDataFailed,
 } from 'features/Courses/data/slice';
 
-function fetchCoursesData(launchId) {
+/**
+ * Fetches licensed courses for a specific launch ID.
+ *
+ * Dispatches a request action to update the courses data status to loading.
+ * It then attempts to fetch the courses data using the provided launch ID and parameters.
+ * If successful, it dispatches a success action with the fetched data.
+ * In case of failure, it dispatches a failure action and logs the error.
+ *
+ * @param {string} launchId - The launch ID for the request.
+ * @param {Object} params - Additional parameters for the request.
+ * @param {string} params.courseId - The ID of the course to filter by (optional).
+ * @param {string} params.keyword - A keyword for searching courses (optional).
+ * @returns {Function} A thunk that handles fetching licensed courses data and dispatching actions.
+ */
+function fetchCoursesData(launchId, params) {
   return async (dispatch) => {
     dispatch(updateCoursesDataRequest());
 
     try {
-      const response = camelCaseObject(await fetchLicensedCourses(launchId));
+      const response = camelCaseObject(await fetchLicensedCourses(launchId, params));
       dispatch(updateCoursesDataSuccess(response.data));
     } catch (error) {
       dispatch(updateCoursesDataFailed());
@@ -37,6 +51,7 @@ function fetchCoursesData(launchId) {
  * @param {string} launchId - The launch ID for the request.
  * @param {Object} params - Additional parameters for the request.
  * @param {string} params.courseId - The course ID for which to fetch the classes data.
+ * @param {string} [params.keyword] - A keyword for searching course classes (optional).
  * @returns {Function} A thunk that handles fetching course classes data and dispatching actions.
  */
 function fetchCourseClassesData(launchId, params) {
