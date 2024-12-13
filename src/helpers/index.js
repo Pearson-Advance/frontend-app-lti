@@ -1,10 +1,12 @@
 /* eslint-disable import/prefer-default-export */
 /**
- * Given a URL, return the course ID at the end of it.
- * @param {string} url - URL from which to extract course ID
- * @returns {string} course ID
+ * Extracts the last path segment (typically a course ID) from a given URL.
+ * @param {string} url - The URL to extract the segment from.
+ * @returns {string} The last path segment, or an empty string if invalid.
  */
 export const extractLastPathSegment = (url) => {
-  const segments = url.split('/');
-  return segments[segments.length - 1];
+  if (!url || typeof url !== 'string') { return ''; }
+
+  const segments = url.trim().split('/').filter(Boolean);
+  return segments.pop() || '';
 };
