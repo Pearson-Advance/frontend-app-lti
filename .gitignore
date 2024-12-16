@@ -19,3 +19,4 @@ temp/babel-plugin-react-intl
 
 # Local environment overrides
 .env.private
+coverage

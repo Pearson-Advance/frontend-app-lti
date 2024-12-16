@@ -1,7 +1,6 @@
 import {
-  BrowserRouter, Switch, Route,
+  Switch, Route,
 } from 'react-router-dom';
-import { getConfig } from '@edx/frontend-platform';
 import CookiePolicyBanner from '@pearsonedunext/frontend-component-cookie-policy-banner';
 
 import { cookieText } from 'features/constants';
@@ -15,7 +14,7 @@ const Main = () => {
   ];
 
   return (
-    <BrowserRouter basename={getConfig().LTI_MFE_BASE_URL}>
+    <>
       <CookiePolicyBanner policyText={{ en: cookieText }} />
       <Switch>
         {routes.map(({ path, exact, component: Component }) => (
@@ -24,7 +23,7 @@ const Main = () => {
 
         <Route path="*" render={() => <h1>Not found</h1>} />
       </Switch>
-    </BrowserRouter>
+    </>
   );
 };
 
