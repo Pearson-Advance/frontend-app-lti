@@ -10,4 +10,10 @@ module.exports = createConfig('webpack-prod', {
       hooks: path.resolve(__dirname, 'src/hooks'),
     },
   },
+  ignoreWarnings: [
+    {
+      // Despite the .map is properly referenced, webpack can't handle it
+      module: /react-responsive/,
+    },
+  ],
 });
