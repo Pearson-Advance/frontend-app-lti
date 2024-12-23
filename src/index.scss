@@ -9,3 +9,10 @@
 @import 'react-paragon-topaz/src/styles/Form/Form.scss';
 @import 'react-paragon-topaz/src/styles/Pagination/Pagination.scss';
 @import 'react-paragon-topaz/src/styles/shared.scss';
+
+@media screen and (min-width: 600px) and (max-width: 1024px) {
+	.page-content-container {
+		max-width: 100%;
+		min-width: 100%;
+	}
+}
