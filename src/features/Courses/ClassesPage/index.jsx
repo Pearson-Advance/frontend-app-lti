@@ -77,6 +77,7 @@ const ClassesPage = () => {
             columns={columns}
             handleChangeSelectedCourses={handleChangeSelectedCourses}
             isLoading={classesTable.status === RequestStatus.LOADING}
+            isSelectable
           />
 
           <TableFooter
