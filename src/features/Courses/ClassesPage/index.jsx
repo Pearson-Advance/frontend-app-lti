@@ -21,7 +21,7 @@ const ClassesPage = () => {
   const { classesTable, table } = useSelector((state) => state.courses);
   const history = useHistory();
 
-  const masterCourse = table.data.find((course) => extractLastPathSegment(course.url) === courseId);
+  const masterCourse = table.data.find((course) => course.custom.resourceId === courseId);
 
   useEffect(() => {
     if (!masterCourse) {
