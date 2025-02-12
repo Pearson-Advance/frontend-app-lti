@@ -23,7 +23,7 @@ const TableLayout = ({
           {
             id: 'action',
             Header: 'Action',
-            Cell: ({ row }) => actionButton(row.original.url),
+            Cell: ({ row }) => actionButton(row.original.custom.resourceId),
           },
         ] : []}
         {...props}
