@@ -32,17 +32,15 @@ const CoursesPage = () => {
     launchId, tableData: table, fetchData: fetchCoursesData,
   });
 
-  const actionButton = (courseId) => {
-    return (
-      <Button
-        variant="outline-primary"
-        size="sm"
-        onClick={() => courseId && history.push(`${launchId}/${courseId}`)}
-      >
-        View class list
-      </Button>
-    );
-  };
+  const actionButton = (courseId) => (
+    <Button
+      variant="outline-primary"
+      size="sm"
+      onClick={() => courseId && history.push(`${launchId}/${courseId}`)}
+    >
+      View class list
+    </Button>
+  );
 
   return (
     <Container size="xl" className="px-4 pt-3">
