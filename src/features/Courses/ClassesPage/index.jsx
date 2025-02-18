@@ -5,7 +5,6 @@ import { useParams, useHistory } from 'react-router-dom';
 import DOMPurify from 'dompurify';
 import { ArrowBack } from '@edx/paragon/icons';
 
-import { extractLastPathSegment } from 'helpers';
 import { RequestStatus } from 'features/constants';
 import TableLayout from 'features/Courses/TableLayout';
 import TableFilters from 'features/Courses/TableFilters';
@@ -21,7 +20,7 @@ const ClassesPage = () => {
   const { classesTable, table } = useSelector((state) => state.courses);
   const history = useHistory();
 
-  const masterCourse = table.data.find((course) => extractLastPathSegment(course.url) === courseId);
+  const masterCourse = table.data.find((course) => course.custom.resourceId === courseId);
 
   useEffect(() => {
     if (!masterCourse) {
