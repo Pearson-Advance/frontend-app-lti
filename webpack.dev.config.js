@@ -1,17 +1,22 @@
 const path = require('path');
-const { createConfig } = require('@edx/frontend-build');
+const { createConfig } = require('@openedx/frontend-build');
 
-module.exports = createConfig('webpack-dev', {
-  resolve: {
-    alias: {
-      features: path.resolve(__dirname, 'src/features'),
-      assets: path.resolve(__dirname, 'src/assets'),
-      helpers: path.resolve(__dirname, 'src/helpers'),
-      hooks: path.resolve(__dirname, 'src/hooks'),
-    },
-  },
+const config = createConfig('webpack-dev');
 
-  devServer: {
-    allowedHosts: 'all',
-  },
-});
+// Ensure resolve/alias exist, then extend
+config.resolve = config.resolve || {};
+config.resolve.alias = {
+  ...(config.resolve.alias || {}),
+  components: path.resolve(__dirname, 'src/components'),
+  features: path.resolve(__dirname, 'src/features'),
+  assets: path.resolve(__dirname, 'src/assets'),
+  hooks: path.resolve(__dirname, 'src/hooks'),
+};
+
+// Allow access via any hostname, and listen on all interfaces
+config.devServer = config.devServer || {};
+config.devServer.allowedHosts = ['all'];
+config.devServer.host = '0.0.0.0';
+config.devServer.port = process.env.PORT || 1981;
+
+module.exports = config;

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Container } from '@edx/paragon';
-import { useHistory, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { fetchCoursesData } from 'features/Courses/data';
 import { RequestStatus } from 'features/constants';
@@ -15,7 +15,7 @@ const CoursesPage = () => {
   const dispatch = useDispatch();
   const { launchId } = useParams();
   const { table } = useSelector((state) => state.courses);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(fetchCoursesData(launchId));
@@ -36,7 +36,7 @@ const CoursesPage = () => {
     <Button
       variant="outline-primary"
       size="sm"
-      onClick={() => courseId && history.push(`${launchId}/${courseId}`)}
+      onClick={() => courseId && navigate(`${launchId}/${courseId}`)}
     >
       View class list
     </Button>

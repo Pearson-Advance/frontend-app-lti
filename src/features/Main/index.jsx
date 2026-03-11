@@ -1,6 +1,4 @@
-import {
-  Switch, Route,
-} from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import CookiePolicyBanner from '@pearsonedunext/frontend-component-cookie-policy-banner';
 
 import { cookieText } from 'features/constants';
@@ -9,20 +7,22 @@ import ClassesPage from 'features/Courses/ClassesPage';
 
 const Main = () => {
   const routes = [
-    { path: '/deep_linking/:launchId', component: CoursesPage, exact: true },
-    { path: '/deep_linking/:launchId/:courseId', component: ClassesPage, exact: true },
+    { path: '/deep_linking/:launchId', element: <CoursesPage /> },
+    { path: '/deep_linking/:launchId/:courseId', element: <ClassesPage /> },
   ];
 
   return (
     <>
       <CookiePolicyBanner policyText={{ en: cookieText }} />
-      <Switch>
-        {routes.map(({ path, exact, component: Component }) => (
-          <Route key={path} path={path} exact={exact} render={() => <Component />} />
+      <Routes>
+        {routes.map((route) => (
+          <Route
+            key={route.path}
+            path={route.path}
+            element={route.element}
+          />
         ))}
-
-        <Route path="*" render={() => <h1>Not found</h1>} />
-      </Switch>
+      </Routes>
     </>
   );
 };
