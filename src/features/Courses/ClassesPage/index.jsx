@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Container } from '@edx/paragon';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import DOMPurify from 'dompurify';
 import { ArrowBack } from '@edx/paragon/icons';
 
@@ -18,7 +18,7 @@ const ClassesPage = () => {
   const dispatch = useDispatch();
   const { launchId, courseId } = useParams();
   const { classesTable, table } = useSelector((state) => state.courses);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const masterCourse = table.data.find((course) => course.custom.resourceId === courseId);
 
@@ -57,7 +57,7 @@ const ClassesPage = () => {
 
       <Container size="xl" className="px-4 py-3">
         <div className="d-flex align-items-center">
-          <Button variant="tertiary" onClick={() => history.push(`/deep_linking/${launchId}`)}>
+          <Button variant="tertiary" onClick={() => navigate(`/deep_linking/${launchId}`)}>
             <ArrowBack />
           </Button>
           <h2 className="title-page my-3 ml-2">Class list</h2>
