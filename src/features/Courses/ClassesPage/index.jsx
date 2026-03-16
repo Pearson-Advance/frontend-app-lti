@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Container } from '@edx/paragon';
+import { Button, Container } from '@openedx/paragon';
 import { useParams, useNavigate } from 'react-router-dom';
 import DOMPurify from 'dompurify';
-import { ArrowBack } from '@edx/paragon/icons';
+import { ArrowBack } from '@openedx/paragon/icons';
 
 import { RequestStatus } from 'features/constants';
 import TableLayout from 'features/Courses/TableLayout';

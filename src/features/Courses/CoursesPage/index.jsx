@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Container } from '@edx/paragon';
+import { Button, Container } from '@openedx/paragon';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { fetchCoursesData } from 'features/Courses/data';
