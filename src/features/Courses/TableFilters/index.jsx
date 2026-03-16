@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Icon } from '@edx/paragon';
+import { Form, Icon } from '@openedx/paragon';
 import { Button } from 'react-paragon-topaz';
-import { Search } from '@edx/paragon/icons';
+import { Search } from '@openedx/paragon/icons';
 
 const TableFilters = ({
   handleSetKeyword, handleResetSearch, keyword, handleSubmitSearch,

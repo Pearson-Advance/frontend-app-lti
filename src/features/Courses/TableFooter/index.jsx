@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Pagination } from '@edx/paragon';
+import { Pagination } from '@openedx/paragon';
 
 const TableFooter = ({
   numPages,

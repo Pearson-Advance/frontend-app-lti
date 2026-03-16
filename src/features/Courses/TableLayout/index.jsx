@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import {
   Col, DataTable, Row,
-} from '@edx/paragon';
+} from '@openedx/paragon';
 
 import './index.scss';
 
