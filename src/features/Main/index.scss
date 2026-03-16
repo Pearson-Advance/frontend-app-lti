@@ -10,13 +10,13 @@ div {
 }
 
 body {
-  font-family: $font-family;
-  color: $color-black;
+  font-family: var(--pgn-typography-font-family-base);
+  color: var(--pgn-color-black);
   margin: 0;
 }
 
 button {
-  font-family: $font-family;
+  font-family: var(--pgn-typography-font-family-base);
   overflow: visible;
 }
 
@@ -25,7 +25,7 @@ input {
 }
 
 a {
-  color: $hyperlink-color;
+  color: var(--pgn-color-primary-base);
   text-decoration: underline;
 
   &:-webkit-any-link {
@@ -45,7 +45,7 @@ li {
 
   .alert-dialog {
     font-size: 1rem;
-    font-family: $font-family;
+    font-family: var(--pgn-typography-font-family-base);
     text-align: start;
     max-width: none;
     margin: 0 1rem 0;

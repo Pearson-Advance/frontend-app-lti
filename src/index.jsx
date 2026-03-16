@@ -5,7 +5,8 @@ import {
   APP_INIT_ERROR, APP_READY, subscribe, initialize,
 } from '@edx/frontend-platform';
 import { AppProvider, ErrorPage } from '@edx/frontend-platform/react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
+import { StrictMode } from 'react';
 
 import Main from 'features/Main';
 
@@ -14,17 +15,21 @@ import { store } from './store';
 
 import './index.scss';
 
+const container = document.getElementById('root');
+const root = createRoot(container);
+
 subscribe(APP_READY, () => {
-  ReactDOM.render(
-    <AppProvider store={store}>
-      <Main />
-    </AppProvider>,
-    document.getElementById('root'),
+  root.render(
+    <StrictMode>
+      <AppProvider store={store}>
+        <Main />
+      </AppProvider>
+    </StrictMode>,
   );
 });
 
 subscribe(APP_INIT_ERROR, (error) => {
-  ReactDOM.render(<ErrorPage message={error.message} />, document.getElementById('root'));
+  root.render(<ErrorPage message={error.message} />);
 });
 
 initialize({
