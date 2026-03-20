@@ -36,7 +36,7 @@ const CoursesPage = () => {
     <Button
       variant="outline-primary"
       size="sm"
-      onClick={() => courseId && navigate(`${launchId}/${courseId}`)}
+      onClick={() => courseId && navigate(`/deep_linking/${launchId}/${courseId}`)}
     >
       View class list
     </Button>
