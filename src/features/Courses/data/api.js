@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
+import { getHttpClient } from '@edx/frontend-platform/auth';
 import { getConfig } from '@edx/frontend-platform';
 
 const DEEP_LINKING_URL = 'lti/deep_linking';
@@ -15,7 +15,7 @@ function fetchLicensedCourses(launchId, { keyword = '', page = 1, courseId = '' 
     course_id: courseId,
   };
 
-  return getAuthenticatedHttpClient().get(URL, { params });
+  return getHttpClient().get(URL, { params });
 }
 
 function fetchCoursesClasses(launchId, { keyword = '', page = 1, courseId = '' } = {}) {
@@ -29,7 +29,7 @@ function fetchCoursesClasses(launchId, { keyword = '', page = 1, courseId = '' }
     course_id: courseId,
   };
 
-  return getAuthenticatedHttpClient().get(URL, { params });
+  return getHttpClient().get(URL, { params });
 }
 
 function validateContentSelection(launchId, data) {
@@ -37,7 +37,7 @@ function validateContentSelection(launchId, data) {
 
   const URL = [apiBaseUrl, 'deep_linking', launchId].join('/');
 
-  return getAuthenticatedHttpClient().post(URL, data);
+  return getHttpClient().post(URL, data);
 }
 
 export { fetchLicensedCourses, fetchCoursesClasses, validateContentSelection };
