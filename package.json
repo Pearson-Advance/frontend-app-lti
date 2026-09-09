@@ -41,7 +41,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "@pearsonedunext/frontend-component-cookie-policy-banner": "^6.0.1",
+    "@pearsonedunext/frontend-component-cookie-policy-banner": "^6.1.0",
     "@reduxjs/toolkit": "^1.9.5",
     "core-js": "3.31.0",
     "dompurify": "^3.2.1",
